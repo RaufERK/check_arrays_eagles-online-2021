@@ -31,26 +31,44 @@ let candidates = [
   },
 ];
 function filterByAge() {
-  let arr = candidates.filter(el => el.age < 50);
+  let arr = candidates.filter((el) => el.age < 50);
   return arr;
 }
- 
 function filterByScore() {
-  return candidates.filter((el) => el.score >= 75);
+  let arr = candidates.filter((el) => el.score >= 75)
+  return arr;
 }
 function filterByServiceRecord() {
-  return candidates.filter((el) => el > 5);
+  return candidates.filter((el) => el.serviceRecord > 5);
 }
 function sortByScore() {
-  
+  return candidates.sort((a, b) => {
+    if (a.score < b.score) {
+      return 1;
+    } 
+    if (a.score > b.score) {
+      return -1;
+    }
+    return 0;
+  })
 }
 function getMeanAge() {
-
+  let arr = [];
+  candidates.forEach((el) => arr.push(el.age));
+  let mean = (arr.reduce((a, b) => a +b))/arr.length;
+  return mean;
 }
 function getNamesOnly() {
-
+  let arr = [];
+  candidates.forEach((el) => arr.push(el.name));
+  return arr;
 }
 console.log(filterByAge());
+console.log(filterByScore());
+console.log(filterByServiceRecord());
+console.log(sortByScore());
+console.log(getMeanAge());
+console.log(getNamesOnly());
 
 module.exports = {
   filterByAge,
