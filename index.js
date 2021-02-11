@@ -5,9 +5,9 @@ const filterByScore=(el)=>el.score>75;
 
   
   function getMeanAge(arr){
-    let total=0;
-    arr.forEach(el=> total+=el.age);
-    return total/arr.length;
+    let total=arr.reduce((total, element)=>total+element.age, 0);
+    let mean=total/arr.length;
+    return mean;
   };
   const getNamesOnly=()=>{}
 
